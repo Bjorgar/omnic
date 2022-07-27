@@ -14,7 +14,7 @@ export default function AttentionPage() {
   return (
     <>
       <Heading2>
-        Не установлен qery параметр в ссылке.
+        Не установлен query параметр в ссылке.
       </Heading2>
       <Paragraph>
         Нажмите кнопку ниже, чтобы установить тестовый query параметр <br />
