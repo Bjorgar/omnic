@@ -7,6 +7,7 @@ import { Heading2 } from '@src/theme/pagesElements';
 
 import ErrorPage from '../ErrorPage';
 import { useAvailableCells } from './hooks/useAvailableCells';
+import { useGetCells } from './hooks/useGetCells';
 import { selectCellsFetchInfo } from './slice';
 import { Cell } from './types';
 
@@ -25,6 +26,8 @@ export default function CellsPage() {
   const [selectedCell, setSelectedCell] = useState<Cell>();
   const { checkedCells } = useAvailableCells();
   useAttention();
+
+  useGetCells();
 
   const clickHandler = () => {
     // Add some next logic

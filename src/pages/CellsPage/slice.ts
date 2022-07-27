@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Api } from '@src/store/api';
 import { RootReducers } from '@src/store/store';
 
@@ -8,6 +8,7 @@ export interface InitialState {
   cellsInfo: CellsResponseData | null;
   status: 'loading' | 'rejected' | 'received' | 'idle';
   error?: string;
+  isChecked: boolean;
 }
 
 export const getCellsInfo = createAsyncThunk<
@@ -44,12 +45,17 @@ const initialState: InitialState = {
   cellsInfo: null,
   error: undefined,
   status: 'idle',
+  isChecked: false,
 };
 
 const cellsInfoSlice = createSlice({
   name: '@@cellsInfo',
   initialState,
-  reducers: {},
+  reducers: {
+    setIsCellsChecked: ((state, action: PayloadAction<void>) => {
+      state.isChecked = true;
+    }),
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getCellsInfo.pending, (state) => {
@@ -70,6 +76,8 @@ const cellsInfoSlice = createSlice({
 
 export const cellsInfoReducer = cellsInfoSlice.reducer;
 
+export const { setIsCellsChecked } = cellsInfoSlice.actions;
+
 export const selectCellsTypes = ({
   cells: {
     cellsInfo,
@@ -82,3 +90,9 @@ export const selectCellsFetchInfo = ({
     status,
   },
 }: RootReducers) => ({ error, status });
+
+export const selectCheckedInfo = ({
+  cells: {
+    isChecked,
+  },
+}: RootReducers) => isChecked;

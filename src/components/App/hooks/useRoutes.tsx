@@ -9,12 +9,18 @@ export function useRoutes() {
   return useBaseRoutes([
     {
       path: '/',
-      element: <MainPage />,
       children: [
         {
+          index: true,
+          element: <MainPage />,
+        },
+        {
           path: 'boxing',
-          element: <BoxingPage />,
           children: [
+            {
+              index: true,
+              element: <BoxingPage />,
+            },
             {
               path: 'cells',
               element: <CellsPage />,
