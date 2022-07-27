@@ -1,8 +1,17 @@
+const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const dotenv = require('dotenv');
 
 const dev = process.env.NODE_ENV !== 'production';
+
+const env = dotenv.config().parsed;
+
+const envKeys = Object.keys(env).reduce((acc, key) => {
+  acc[`process.env.${key}`] = JSON.stringify(env[key]);
+  return acc;
+}, {});
 
 module.exports = {
   mode: dev ? 'development' : 'production',
@@ -49,10 +58,6 @@ module.exports = {
             },
           },
           {
-            loader: '@linaria/webpack-loader',
-            options: { sourceMap: dev },
-          },
-          {
             loader: 'ts-loader',
             options: {
               configFile: 'tsconfig.json',
@@ -96,5 +101,6 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: dev ? 'styles.css' : 'styles-[contenthash].css',
     }),
+    new webpack.DefinePlugin(envKeys),
   ],
 };
