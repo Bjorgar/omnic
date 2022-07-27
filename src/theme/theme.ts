@@ -32,6 +32,7 @@ export const theme: DefaultTheme = {
     normal: '0.3s',
   },
   breakpoints: {
+    xxs: '400px',
     xs: '480px',
     s: '580px',
     m: '724px',

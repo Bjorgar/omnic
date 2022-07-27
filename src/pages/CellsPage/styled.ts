@@ -53,7 +53,7 @@ export const SizesWrapper = styled.div`
   }
 
   @media (max-width: ${({ theme }): string => theme.breakpoints.xs}) {
-    width: 340px;
+    width: 305px;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(4, 100px) repeat(2, 130px) 160px 180px;
   }

@@ -24,6 +24,10 @@ export const Ol = styled.ol`
   font-weight: ${({ theme }): string => theme.typography.fontWeight[400]};
   font-size: 14px;
   width: 300px;
+
+  @media (max-width: ${({ theme }): string => theme.breakpoints.xxs}) {
+    width: 270px;
+  }
 `;
 
 export const Li = styled.li`

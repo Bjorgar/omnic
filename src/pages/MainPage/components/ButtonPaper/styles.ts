@@ -41,4 +41,8 @@ export const Wrapper = styled(LinkWithSearch)`
     font-weight: ${({ theme }): string => theme.typography.fontWeight[600]};
     font-size: 18px;
   }
+
+  @media (max-width: ${({ theme }): string => theme.breakpoints.xxs}) {
+    width: 305px;
+  }
 `;

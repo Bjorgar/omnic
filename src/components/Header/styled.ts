@@ -16,6 +16,10 @@ export const Nav = styled.nav`
   border-bottom: 1px solid black;
   padding: 0 ${({ theme }): string => theme.spacing(5)};
   color: ${({ theme }) => theme.palette.error};
+
+  @media (max-width: ${({ theme }): string => theme.breakpoints.m}) {
+    padding: 0 ${({ theme }): string => theme.spacing(2)};
+  }
 `;
 
 export const InfoWrapper = styled.div`
@@ -41,6 +45,10 @@ export const InfoLink = styled(LinkWithSearch)`
   @media (max-width: ${({ theme }): string => theme.breakpoints.m}) {
     order: 2;
   }
+
+  @media (max-width: ${({ theme }): string => theme.breakpoints.xxs}) {
+    font-size: 14px;
+  }
 `;
 
 export const DeviceId = styled.h2`
@@ -53,9 +61,13 @@ export const DeviceId = styled.h2`
   color: ${({ theme }): string => theme.palette.primary[90]};
 
   @media (max-width: ${({ theme }): string => theme.breakpoints.m}) {
+    margin-left: 0;
     font-size: 18px;
-    margin-left: ${({ theme }): string => theme.spacing()};
     order: 1;
+  }
+
+  @media (max-width: ${({ theme }): string => theme.breakpoints.xxs}) {
+    font-size: 16px;
   }
 `;
 
