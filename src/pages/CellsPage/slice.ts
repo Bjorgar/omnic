@@ -1,15 +1,13 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { Api } from '@src/store/api';
 import { RootReducers } from '@src/store/store';
 
-import { ALL_CELLS } from './constants';
-import { Cell, CellsResponseData } from './types';
+import { CellsResponseData } from './types';
 
 export interface InitialState {
   cellsInfo: CellsResponseData | null;
   status: 'loading' | 'rejected' | 'received' | 'idle';
   error?: string;
-  checkedCells: Cell[]
 }
 
 export const getCellsInfo = createAsyncThunk<
@@ -46,17 +44,12 @@ const initialState: InitialState = {
   cellsInfo: null,
   error: undefined,
   status: 'idle',
-  checkedCells: [],
 };
 
 const cellsInfoSlice = createSlice({
   name: '@@cellsInfo',
   initialState,
-  reducers: {
-    setCheckedCells: (state, action: PayloadAction<Cell[]>) => {
-      state.checkedCells = action.payload;
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(getCellsInfo.pending, (state) => {
@@ -75,8 +68,6 @@ const cellsInfoSlice = createSlice({
 
 export const cellsInfoReducer = cellsInfoSlice.reducer;
 
-export const { setCheckedCells } = cellsInfoSlice.actions;
-
 export const selectCellsTypes = ({
   cells: {
     cellsInfo,
@@ -89,9 +80,3 @@ export const selectCellsFetchInfo = ({
     status,
   },
 }: RootReducers) => ({ error, status });
-
-export const selectCheckedCells = ({
-  cells: {
-    checkedCells,
-  },
-}: RootReducers) => checkedCells;

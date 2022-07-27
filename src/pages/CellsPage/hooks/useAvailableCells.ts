@@ -1,18 +1,22 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useSearchParams } from 'react-router-dom';
 import { useTypeDispatch } from '@src/store/store';
 
 import { ALL_CELLS } from '../constants';
 import {
-  getCellsInfo, selectCellsTypes, selectCheckedCells, setCheckedCells,
+  getCellsInfo,
+  selectCellsTypes,
 } from '../slice';
 import { CellParams } from '../types';
 import { transformCellsData } from '../utils/transformCellsData';
 
 export function useAvailableCells() {
+  const [checkedCells, setCheckedCells] = useState(ALL_CELLS);
+  const [searchParams] = useSearchParams();
   const data = useSelector(selectCellsTypes);
-  const checkedCells = useSelector(selectCheckedCells);
   const dispatch = useTypeDispatch();
+  const uid = searchParams.get('device_uid') || '';
 
   function checkAvailableCells(cellsParams: CellParams[]): void {
     ALL_CELLS.forEach((cell) => {
@@ -28,13 +32,13 @@ export function useAvailableCells() {
   }
 
   useEffect(() => {
-    if (data && !checkedCells) {
+    if (!data && uid) {
+      dispatch(getCellsInfo(uid));
+    } else if (data) {
       const cellsParams = transformCellsData(data);
       checkAvailableCells(cellsParams);
-    } else if (!checkedCells) {
-      dispatch<any>(getCellsInfo);
     }
-  }, [data, dispatch, checkedCells]);
+  }, [data, uid, dispatch]);
 
   return { checkedCells };
 }
