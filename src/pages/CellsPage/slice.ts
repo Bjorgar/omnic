@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { Api } from '@src/store/api';
 import { RootReducers } from '@src/store/store';
 
@@ -52,7 +52,7 @@ const cellsInfoSlice = createSlice({
   name: '@@cellsInfo',
   initialState,
   reducers: {
-    setIsCellsChecked: ((state, action: PayloadAction<void>) => {
+    setIsCellsChecked: ((state) => {
       state.isChecked = true;
     }),
   },
