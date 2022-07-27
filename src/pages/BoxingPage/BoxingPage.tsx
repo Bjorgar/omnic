@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import Box from '@src/assets/full-box.svg';
 import Button from '@src/components/Button';
-import { useCaution } from '@src/hooks/useCaution';
+import { useAttention } from '@src/hooks/useAttention';
 import { Heading2 } from '@src/theme/pagesElements';
 
 import {
@@ -12,7 +12,7 @@ import {
 } from './styled';
 
 export default function BoxingPage(): JSX.Element {
-  useCaution();
+  useAttention();
 
   return (
     <>

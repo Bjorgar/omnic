@@ -4,6 +4,7 @@ export const textCommon = css`
   font-family: ${({ theme }) => theme.typography.fontFamily.primary};
   font-weight: ${({ theme }) => theme.typography.fontWeight[300]};
   color: ${({ theme }) => theme.palette.grey[90]};
+  padding: 0 ${({ theme }) => theme.spacing()};
 `;
 
 export const Heading1 = styled.h1`

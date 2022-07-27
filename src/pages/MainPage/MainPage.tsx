@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import LoadIndicator from '@src/components/LoadIndicator';
-import { useCaution } from '@src/hooks/useCaution';
+import { useAttention } from '@src/hooks/useAttention';
 
 import ErrorPage from '../ErrorPage';
 import LeftButton from './components/LeftButton';
@@ -16,7 +16,7 @@ import {
 
 export default function MainPage() {
   useGetDeviceInfo();
-  useCaution();
+  useAttention();
 
   const { error, status } = useSelector(selectDeviceFetchInfo);
 

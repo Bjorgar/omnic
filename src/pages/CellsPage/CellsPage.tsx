@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import Button from '@src/components/Button';
 import LoadIndicator from '@src/components/LoadIndicator';
-import { useCaution } from '@src/hooks/useCaution';
+import { useAttention } from '@src/hooks/useAttention';
 import { Heading2 } from '@src/theme/pagesElements';
 
 import ErrorPage from '../ErrorPage';
@@ -24,7 +24,7 @@ import {
 export default function CellsPage() {
   const [selectedCell, setSelectedCell] = useState<Cell>();
   const { checkedCells } = useAvailableCells();
-  useCaution();
+  useAttention();
 
   const clickHandler = () => {
     // Add some next logic

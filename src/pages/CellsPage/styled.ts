@@ -33,6 +33,11 @@ export const ButtonsWrapper = styled.div`
   margin-top: ${({ theme: { spacing } }): string => spacing(3)};
   display: flex;
   justify-content: space-between;
+
+  @media (max-width: ${({ theme }): string => theme.breakpoints.xs}) {
+    flex-direction: column;
+    gap: ${({ theme: { spacing } }): string => spacing(3)}
+  }
 `;
 
 export const SizesWrapper = styled.div`
@@ -41,6 +46,17 @@ export const SizesWrapper = styled.div`
   grid-template-columns: 186px 240px 435px;
   grid-template-rows: 80px 34px 80px 130px;
   margin-top: ${({ theme }): string => theme.spacing(6)};
+
+  @media (max-width: ${({ theme }): string => theme.breakpoints.xl}) {
+    grid-template-columns: 186px 240px;
+    grid-template-rows: 80px 114px 130px 135px 165px;
+  }
+
+  @media (max-width: ${({ theme }): string => theme.breakpoints.xs}) {
+    width: 340px;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 100px) repeat(2, 130px) 160px 180px;
+  }
 `;
 
 export const CellBox = styled.div`
@@ -92,6 +108,90 @@ export const CellBox = styled.div`
     grid-column: 3;
     grid-row: 3 / -1;
   };
+
+  @media (max-width: ${({ theme }): string => theme.breakpoints.xl}) {
+    &:nth-child(1) {
+      grid-column: 1;
+      grid-row: 1;
+    };
+
+    &:nth-child(2) {
+      grid-column: 1;
+      grid-row: 2;
+    };
+
+    &:nth-child(3) {
+      grid-column: 1;
+      grid-row: 3;
+    };
+
+    &:nth-child(4) {
+      grid-column: 2;
+      grid-row: 1;
+    };
+
+    &:nth-child(5) {
+      grid-column: 2;
+      grid-row: 2;
+    };
+
+    &:nth-child(6) {
+      grid-column: 2;
+      grid-row: 3;
+    };
+
+    &:nth-child(7) {
+      grid-column: 1 / 3;
+      grid-row: 4;
+    };
+
+    &:nth-child(8) {
+      grid-column: 1 / 3;
+      grid-row: 5;
+    };
+  }
+
+  @media (max-width: ${({ theme }): string => theme.breakpoints.xs}) {
+    &:nth-child(1) {
+      grid-column: 1;
+      grid-row: 1;
+    };
+
+    &:nth-child(2) {
+      grid-column: 1;
+      grid-row: 2;
+    };
+
+    &:nth-child(3) {
+      grid-column: 1;
+      grid-row: 3;
+    };
+
+    &:nth-child(4) {
+      grid-column: 1;
+      grid-row: 4;
+    };
+
+    &:nth-child(5) {
+      grid-column: 1;
+      grid-row: 5;
+    };
+
+    &:nth-child(6) {
+      grid-column: 1;
+      grid-row: 6;
+    };
+
+    &:nth-child(7) {
+      grid-column: 1;
+      grid-row: 7;
+    };
+
+    &:nth-child(8) {
+      grid-column: 1;
+      grid-row: 8;
+    };
+  }
 `;
 
 export const SVGWrapper = styled.div`

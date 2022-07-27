@@ -40,6 +40,13 @@ declare module 'styled-components' {
     transitionDuration: {
       normal: string;
     };
+    breakpoints: {
+      xs: string;
+      s: string;
+      m: string;
+      l: string;
+      xl: string;
+    };
     spacing: (value?: number) => string;
   }
 }

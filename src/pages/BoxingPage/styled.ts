@@ -10,6 +10,12 @@ const wrapperCommon = css`
 export const InfoWrapper = styled.div`
   ${wrapperCommon};
   margin-top: ${({ theme: { spacing } }): string => spacing(8)};
+
+  @media (max-width: ${({ theme }): string => theme.breakpoints.s}) {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
 `;
 
 export const Ol = styled.ol`
@@ -31,4 +37,14 @@ export const Li = styled.li`
 export const ButtonsWrapper = styled.div`
   ${wrapperCommon};
   margin-top: ${({ theme: { spacing } }): string => spacing(14)};
+  padding-left: ${({ theme: { spacing } }): string => spacing(2)};
+  padding-right: ${({ theme: { spacing } }): string => spacing(2)};
+
+  @media (max-width: ${({ theme }): string => theme.breakpoints.s}) {
+    margin-top: ${({ theme: { spacing } }): string => spacing(8)};
+    flex-direction: column;
+    gap: ${({ theme: { spacing } }): string => spacing(4)};
+    justify-content: flex-start;
+    align-items: center;
+  }
 `;

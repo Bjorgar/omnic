@@ -8,6 +8,11 @@ export const MainPageButtons = styled.main`
   display: flex;
   gap: 60px;
   justify-content: center;
+
+  @media (max-width: 816px) {
+    flex-direction: column;
+    gap: 40px;
+  };
 `;
 
 export const Heading1 = styled(BaseH1)`

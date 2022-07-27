@@ -4,7 +4,7 @@ import { QUERY_KEY, QUERY_VALUE } from '@src/mock/constants';
 
 import { Heading2, Paragraph } from './styled';
 
-export default function CautionPage() {
+export default function AttentionPage() {
   const navigate = useNavigate();
 
   function clickHandler(): void {

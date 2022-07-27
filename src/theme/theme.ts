@@ -31,5 +31,12 @@ export const theme: DefaultTheme = {
   transitionDuration: {
     normal: '0.3s',
   },
+  breakpoints: {
+    xs: '480px',
+    s: '580px',
+    m: '724px',
+    l: '816px',
+    xl: '950px',
+  },
   spacing: (value = 1) => `${value * 8}px`,
 };

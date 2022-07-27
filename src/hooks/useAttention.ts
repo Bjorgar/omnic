@@ -8,7 +8,7 @@ import {
 } from 'react-router-dom';
 import { selectDeviceId } from '@src/pages/MainPage/slice';
 
-export function useCaution() {
+export function useAttention() {
   const isMainPage = useMatch('/');
   const { pathname } = useLocation();
   const navigate = useNavigate();

@@ -14,13 +14,12 @@ import Header from '../Header';
 import Wrapper from '../Wrapper';
 
 const InstructionPage = lazy(() => import('@src/pages/InstructionPage'));
-const CautionPage = lazy(() => import('@src/pages/CautionPage'));
+const AttentionPage = lazy(() => import('@src/pages/AttentionPage'));
 
 export default function App(): JSX.Element {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-
       <Header />
       <Wrapper>
         <Suspense>
@@ -29,7 +28,7 @@ export default function App(): JSX.Element {
             <Route path="boxing/" element={<BoxingPage />} />
             <Route path="boxing/cells" element={<CellsPage />} />
             <Route path="instruction" element={<InstructionPage />} />
-            <Route path="caution" element={<CautionPage />} />
+            <Route path="caution" element={<AttentionPage />} />
           </Routes>
         </Suspense>
       </Wrapper>

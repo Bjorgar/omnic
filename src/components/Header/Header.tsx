@@ -1,15 +1,23 @@
 import { useSelector } from 'react-redux';
-import Logo from '@src/assets/logo.svg';
 import { selectDeviceId } from '@src/pages/MainPage/slice';
 
 import LinkWithSearch from '../LinkWithSearch';
+import LoadIndicator from '../LoadIndicator';
 
 import {
-  DeviceId, InfoLink, InfoWrapper, Nav,
+  DeviceId,
+  InfoLink,
+  InfoWrapper,
+  Logo,
+  Nav,
 } from './styled';
 
 export default function Header() {
   const deviceId = useSelector(selectDeviceId);
+
+  const displayedData = deviceId
+    ? `Постомат № ${deviceId}`
+    : <LoadIndicator size="m" />;
 
   return (
     <Nav>
@@ -21,7 +29,7 @@ export default function Header() {
           Инструкция
         </InfoLink>
         <DeviceId>
-          Постомат № {deviceId}
+          {displayedData}
         </DeviceId>
       </InfoWrapper>
     </Nav>
