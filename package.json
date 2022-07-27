@@ -9,10 +9,13 @@
     "ci-check": "npm run lint && npm run tsc",
     "prepare": "husky install",
     "lint": "eslint ./src --ext .js,.jsx,.ts,.tsx",
-    "tsc": "tsc -p ./ --noEmit"
+    "tsc": "tsc -p ./ --noEmit",
+    "deploy": "gh-pages -d dist",
+    "predeploy": "npm run build"
   },
   "author": "Lev Hnitsa <lev.hnitsa@gmail.com>",
   "license": "ISC",
+  "homepage": "https://bjorgar.github.io/omnic/",
   "dependencies": {
     "@babel/core": "^7.18.5",
     "@babel/preset-env": "^7.18.2",
@@ -28,6 +31,7 @@
     "css-loader": "^6.7.1",
     "dotenv": "^16.0.1",
     "file-loader": "^6.2.0",
+    "gh-pages": "^4.0.0",
     "html-webpack-plugin": "^5.5.0",
     "husky": "^8.0.1",
     "mini-css-extract-plugin": "^2.6.1",
