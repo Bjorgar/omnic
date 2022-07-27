@@ -1,10 +1,9 @@
-import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Button from '@src/components/Button';
+import { useCaution } from '@src/hooks/useCaution';
 import { Heading2 } from '@src/theme/pagesElements';
 
-import { selectDeviceNumber } from '../MainPage/slice';
 import { useAvailableCells } from './hooks/useAvailableCells';
 import { Cell } from './types';
 
@@ -22,10 +21,9 @@ import {
 export default function CellsPage() {
   const [selectedCell, setSelectedCell] = useState<Cell>();
   const navigate = useNavigate();
-  const { search } = useLocation();
-  const deviceNumber = useSelector(selectDeviceNumber);
+  useCaution();
 
-  const { allCells } = useAvailableCells();
+  const { checkedCells } = useAvailableCells();
 
   const clickHandler = () => {
     // Add some next logic
@@ -35,15 +33,6 @@ export default function CellsPage() {
     setSelectedCell(cell);
   };
 
-  useEffect(() => {
-    if (!deviceNumber) {
-      navigate(`/${search}`, { replace: true });
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    // we should not add navigate fn to deps,
-    // because it call infinite rerenders
-  }, [deviceNumber, search]);
-
   return (
     <>
       <Heading2>
@@ -52,7 +41,7 @@ export default function CellsPage() {
       <Paper>
         <SizesWrapper>
           {
-            allCells.map((cell) => {
+            checkedCells.map((cell) => {
               const widthCm = Math.floor(cell.params.width / 10);
               const heightCm = Math.floor(cell.params.height / 10);
               const params = `${widthCm} x ${heightCm} см`;

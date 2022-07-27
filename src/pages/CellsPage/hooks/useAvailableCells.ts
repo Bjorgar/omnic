@@ -1,19 +1,18 @@
-import { useEffect, useState } from 'react';
-import { useFetch } from '@src/hooks/useFetch';
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { useTypeDispatch } from '@src/store/store';
 
 import { ALL_CELLS } from '../constants';
-import { getCellsInfo, selectCellsFetchInfo, selectCellsTypes } from '../slice';
+import {
+  getCellsInfo, selectCellsTypes, selectCheckedCells, setCheckedCells,
+} from '../slice';
 import { CellParams } from '../types';
 import { transformCellsData } from '../utils/transformCellsData';
 
 export function useAvailableCells() {
-  const [allCells, setAllCells] = useState(ALL_CELLS);
-
-  const { data, info: { error, status } } = useFetch({
-    action: getCellsInfo,
-    dataSelector: selectCellsTypes,
-    fetchInfoSelector: selectCellsFetchInfo,
-  });
+  const data = useSelector(selectCellsTypes);
+  const checkedCells = useSelector(selectCheckedCells);
+  const dispatch = useTypeDispatch();
 
   function checkAvailableCells(cellsParams: CellParams[]): void {
     ALL_CELLS.forEach((cell) => {
@@ -25,18 +24,17 @@ export function useAvailableCells() {
       if (isEqual) cell.isAvailable = true;
     });
 
-    setAllCells(ALL_CELLS);
+    setCheckedCells(ALL_CELLS);
   }
 
   useEffect(() => {
-    if (!data) return;
-    const cellsParams = transformCellsData(data);
-    checkAvailableCells(cellsParams);
-  }, [data]);
+    if (data && !checkedCells) {
+      const cellsParams = transformCellsData(data);
+      checkAvailableCells(cellsParams);
+    } else if (!checkedCells) {
+      dispatch<any>(getCellsInfo);
+    }
+  }, [data, dispatch, checkedCells]);
 
-  return {
-    allCells,
-    error,
-    status,
-  };
+  return { checkedCells };
 }

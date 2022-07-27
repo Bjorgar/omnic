@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import Logo from '@src/assets/logo.svg';
-import { selectDeviceNumber } from '@src/pages/MainPage/slice';
+import { selectDeviceNumber } from '@src/components/App/slice';
 
 import LinkWithSearch from '../LinkWithSearch';
 

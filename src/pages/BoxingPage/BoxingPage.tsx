@@ -2,6 +2,7 @@
 import { useNavigate } from 'react-router-dom';
 import Box from '@src/assets/full-box.svg';
 import Button from '@src/components/Button';
+import { useCaution } from '@src/hooks/useCaution';
 import { Heading2 } from '@src/theme/pagesElements';
 
 import {
@@ -13,6 +14,7 @@ import {
 
 export default function BoxingPage(): JSX.Element {
   const navigate = useNavigate();
+  useCaution();
 
   return (
     <>

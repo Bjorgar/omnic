@@ -1,15 +1,15 @@
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Button from '@src/components/Button';
-
-import { QUERY_KEY, QUERY_VALUE } from './constants';
+import { QUERY_KEY, QUERY_VALUE } from '@src/mock/constants';
 
 import { Heading2, Paragraph } from './styled';
 
 export default function CautionPage() {
+  const { state } = useLocation();
   const navigate = useNavigate();
 
   function clickHandler(): void {
-    navigate(`/?${QUERY_KEY}=${QUERY_VALUE}`, { replace: true });
+    navigate(`${state}?${QUERY_KEY}=${QUERY_VALUE}`, { replace: true });
   }
 
   return (

@@ -1,12 +1,7 @@
-import { useFetch } from '@src/hooks/useFetch';
+import { useCaution } from '@src/hooks/useCaution';
 
 import LeftButton from './components/LeftButton';
 import RightButton from './components/RightButton';
-import {
-  getDeviceInfo,
-  selectDeviceFetchInfo,
-  selectDeviceNumber,
-} from './slice';
 
 import {
   Heading1,
@@ -15,12 +10,7 @@ import {
 } from './styled';
 
 export default function MainPage() {
-  const { info: { error, status } } = useFetch({
-    action: getDeviceInfo,
-    dataSelector: selectDeviceNumber,
-    fetchInfoSelector: selectDeviceFetchInfo,
-  });
-
+  useCaution();
   return (
     <>
       <Heading1>Приветствуем Вас!</Heading1>
