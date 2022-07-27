@@ -19,7 +19,7 @@ export function useAttention() {
 
   useEffect(() => {
     if (!uid) {
-      navigate('/caution');
+      navigate('/attention');
     } else if (!deviceId && !isMainPage) {
       navigate('/');
     }
