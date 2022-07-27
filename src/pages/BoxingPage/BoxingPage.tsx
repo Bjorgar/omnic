@@ -1,5 +1,4 @@
 /* eslint-disable max-len */
-import { useNavigate } from 'react-router-dom';
 import Box from '@src/assets/full-box.svg';
 import Button from '@src/components/Button';
 import { useCaution } from '@src/hooks/useCaution';
@@ -13,7 +12,6 @@ import {
 } from './styled';
 
 export default function BoxingPage(): JSX.Element {
-  const navigate = useNavigate();
   useCaution();
 
   return (
@@ -35,7 +33,7 @@ export default function BoxingPage(): JSX.Element {
       <ButtonsWrapper>
         <Button
           variant="outlined"
-          onClick={() => navigate(-1)}
+          to="/"
         >
           Назад
         </Button>

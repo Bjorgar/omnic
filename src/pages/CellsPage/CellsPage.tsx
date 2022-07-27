@@ -1,10 +1,13 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import Button from '@src/components/Button';
+import LoadIndicator from '@src/components/LoadIndicator';
 import { useCaution } from '@src/hooks/useCaution';
 import { Heading2 } from '@src/theme/pagesElements';
 
+import ErrorPage from '../ErrorPage';
 import { useAvailableCells } from './hooks/useAvailableCells';
+import { selectCellsFetchInfo } from './slice';
 import { Cell } from './types';
 
 import {
@@ -20,21 +23,24 @@ import {
 
 export default function CellsPage() {
   const [selectedCell, setSelectedCell] = useState<Cell>();
-  const navigate = useNavigate();
-  useCaution();
-
   const { checkedCells } = useAvailableCells();
+  useCaution();
 
   const clickHandler = () => {
     // Add some next logic
   };
 
+  const { error, status } = useSelector(selectCellsFetchInfo);
+
   const selectCell = (cell: Cell): void => {
     setSelectedCell(cell);
   };
 
-  return (
+  return error ? (
+    <ErrorPage error={error} />
+  ) : (
     <>
+      {status === 'loading' && <LoadIndicator size="xxl" />}
       <Heading2>
         Выберите размер посылки
       </Heading2>
@@ -74,7 +80,7 @@ export default function CellsPage() {
         <ButtonsWrapper>
           <Button
             variant="outlined"
-            onClick={() => navigate(-1)}
+            to="/boxing"
           >
             Назад
           </Button>

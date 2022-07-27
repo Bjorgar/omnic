@@ -1,15 +1,15 @@
 import { useSelector } from 'react-redux';
 import Logo from '@src/assets/logo.svg';
-import { selectDeviceNumber } from '@src/components/App/slice';
+import { selectDeviceId } from '@src/pages/MainPage/slice';
 
 import LinkWithSearch from '../LinkWithSearch';
 
 import {
-  DeviceNumber, InfoLink, InfoWrapper, Nav,
+  DeviceId, InfoLink, InfoWrapper, Nav,
 } from './styled';
 
 export default function Header() {
-  const deviceNumber = useSelector(selectDeviceNumber);
+  const deviceId = useSelector(selectDeviceId);
 
   return (
     <Nav>
@@ -20,9 +20,9 @@ export default function Header() {
         <InfoLink to="instruction">
           Инструкция
         </InfoLink>
-        <DeviceNumber>
-          Постомат № {deviceNumber}
-        </DeviceNumber>
+        <DeviceId>
+          Постомат № {deviceId}
+        </DeviceId>
       </InfoWrapper>
     </Nav>
   );

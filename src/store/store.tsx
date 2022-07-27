@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { deviceInfoReducer } from '@src/components/App/slice';
 import { cellsInfoReducer } from '@src/pages/CellsPage/slice';
+import { deviceInfoReducer } from '@src/pages/MainPage/slice';
 
 import { api } from './api';
 

@@ -1,15 +1,14 @@
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Button from '@src/components/Button';
 import { QUERY_KEY, QUERY_VALUE } from '@src/mock/constants';
 
 import { Heading2, Paragraph } from './styled';
 
 export default function CautionPage() {
-  const { state } = useLocation();
   const navigate = useNavigate();
 
   function clickHandler(): void {
-    navigate(`${state}?${QUERY_KEY}=${QUERY_VALUE}`, { replace: true });
+    navigate(`/?${QUERY_KEY}=${QUERY_VALUE}`, { replace: true });
   }
 
   return (
@@ -19,7 +18,7 @@ export default function CautionPage() {
       </Heading2>
       <Paragraph>
         Нажмите кнопку ниже, чтобы установить тестовый query параметр <br />
-        и вернуться на предыдущую страницу.
+        и вернуться на главную страницу.
       </Paragraph>
       <Button
         variant="contained"

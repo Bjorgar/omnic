@@ -26,7 +26,7 @@ export const InfoLink = styled(LinkWithSearch)`
   font-size: 16px;
 `;
 
-export const DeviceNumber = styled.h2`
+export const DeviceId = styled.h2`
   margin-left: ${({ theme }): string => theme.spacing(7)};
   font-family: ${({ theme }): string => theme.typography.fontFamily.primary};
   font-weight: ${({ theme }): string => theme.typography.fontWeight[600]};

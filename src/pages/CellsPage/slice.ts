@@ -54,6 +54,7 @@ const cellsInfoSlice = createSlice({
     builder
       .addCase(getCellsInfo.pending, (state) => {
         state.status = 'loading';
+        state.error = undefined;
       })
       .addCase(getCellsInfo.rejected, (state, action) => {
         state.status = 'rejected';
@@ -62,6 +63,7 @@ const cellsInfoSlice = createSlice({
       .addCase(getCellsInfo.fulfilled, (state, action) => {
         state.status = 'received';
         state.cellsInfo = action.payload;
+        state.error = undefined;
       });
   },
 });

@@ -54,6 +54,7 @@ const deviceInfoSlice = createSlice({
     builder
       .addCase(getDeviceInfo.pending, (state) => {
         state.status = 'loading';
+        state.error = undefined;
       })
       .addCase(getDeviceInfo.rejected, (state, action) => {
         state.status = 'rejected';
@@ -62,12 +63,13 @@ const deviceInfoSlice = createSlice({
       .addCase(getDeviceInfo.fulfilled, (state, action) => {
         state.status = 'received';
         state.deviceInfo = action.payload;
+        state.error = undefined;
       });
   },
 });
 
 export const deviceInfoReducer = deviceInfoSlice.reducer;
-export const selectDeviceNumber = ({
+export const selectDeviceId = ({
   device: {
     deviceInfo,
   },

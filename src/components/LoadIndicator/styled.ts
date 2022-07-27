@@ -13,10 +13,10 @@ function applySize({
 }: IndicatorProps): FlattenInterpolation<ThemeProps<DefaultTheme>> {
   return size === 'm'
     ? css`
-        border-top: 3px solid rgba(255, 255, 255, 0.2);
-        border-right: 3px solid rgba(255, 255, 255, 0.2);
-        border-bottom: 3px solid rgba(255, 255, 255, 0.2);
-        border-left: 3px solid #ffffff;
+        border-top: 3px solid rgba(14, 255, 14, 0.521);
+        border-right: 3px solid rgba(14, 255, 14, 0.521);
+        border-bottom: 3px solid rgba(14, 255, 14, 0.521);
+        border-left: 3px solid ${({ theme }) => (theme.palette.primary[40])};
 
         &, &::after {
           border-radius: 50%;
@@ -25,9 +25,9 @@ function applySize({
         }
       `
     : css`
-        border-top: 10px solid rgba(14, 255, 14, 0.319);
-        border-right: 10px solid rgba(14, 255, 14, 0.319);
-        border-bottom: 10px solid rgba(14, 255, 14, 0.319);
+        border-top: 10px solid rgba(14, 255, 14, 0.521);
+        border-right: 10px solid rgba(14, 255, 14, 0.521);
+        border-bottom: 10px solid rgba(14, 255, 14, 0.521);
         border-left: 10px solid ${({ theme }) => (theme.palette.primary[40])};
 
         &, &::after {
@@ -57,6 +57,7 @@ export const Loading = styled.div`
 `;
 
 export const LoadingWrapper = styled.div`
+  z-index: 10;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -65,5 +66,5 @@ export const LoadingWrapper = styled.div`
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: #00000052;
+  background-color: #ffffff90;
 `;
